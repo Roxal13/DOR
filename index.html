@@ -10,13 +10,108 @@
     <h1>Elementos para incrustar contenido</h1>
     <h2>Etiqueta img</h2>
     <p>Permite insertar una imagen</p>
-    <img src="src/images.jpg" height="150px" alt="Imagen">
+    <img src="src/images.jpg" width="600px" alt="Imagen">
+    
     <h2>Etiqueta iframe</h2>
     <p>Permite incrustar un archivo html dentro de la propia página web</p>
     <iframe src="src/bola.html" title="Juego de bola" frameborder="1" style="border: 1px solid black;" height="400px" width="600px"></iframe>
+    
     <h2>Etiqueta embed</h2>
-    <p>Permite crear un contenedor de contenido externo, que puede ser una página web, imagen, un video, o una aplicación</p>
+    <p>Permite crear un contenedor de contenido externo, que puede ser una página web, imagen, un video, o una aplicación.</p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/eGUEAvNpz48" title="Vídeo de YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p></p>
+    
+    <h2>Etiqueta object</h2>
+    <p>Representa un recurso externo, que puede ser tratado como imagen, o recurso manejado por plugin.</p>
+    <object type="application/pdf"
+        data="src\DPL_T02_A02_17AlvaroRom.pdf"
+        width="500"
+        height="400">
+    </object>
+    
+    <h2>Etiqueta param</h2>
+    <p>Define variables en aplicaciones externas, por ejemplo a object, en el cual se le puede dar parametros como la calidad, o el fondo de la ventana, actualmente la etiqueta está en desuso y por tanto no es recomendable usarla.</p>
+    <object data="https://www.youtube.com/embed/JHq3pL4cdy4" width="500">  
+        <param name="controller" value="true">  
+        <param name="quality" value="high">
+        <param name="wmode" value="transparent">
+    </object>
+    
+    <h2>Etiqueta video</h2>
+    <p>Se utiliza para incrustar vídeos en el documento.</p>
+    <video src="src/video.mp4" poster="src/poster.jpg" width="500" controls></video>
+    
+    <h2>Etiqueta audio</h2>
+    <p>Se utiliza para incrustar audio en el documento.</p>
+    <audio src="src/audio.mp3"  controls></audio>
+
+    <h2>Etiqueta source</h2>
+    <p>Especifeca recursos de medios múltiples para los elementos picture, audio, o video.</p>
+    <picture>
+        <source src="src/image.jpg" type="image/jpg">
+        <img src="src/image.png" alt="Imagen" width="600">
+    </picture>
+
+    <h2>Etiqueta track</h2>
+    <p>Se utiliza como elemento hijo de los elementos multimedia, audio y video.</p>
+    <video controls="controls" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/122116/2010-0927-KMOV-News-4.png" width="640" height="360" crossorigin="anonymous">
+        <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/122116/2010-0927-KMOV-News-4.mp4" type="video/mp4">
+        <track src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/122116/2010-0518-KMOV-News-4_3.vtt" kind="subtitles" srclang="en" label="Testola" default>
+    </video>
+
+    <h2>Etiqueta canvas</h2>
+    <p>Es una etiqueta que sirve para usarla como lienzo, y dibujos sobre ella, o crear imágenes con html.</p>
+    <canvas id="micanvas">Tu navegador no soporta canvas</canvas>
+    
+    <h2>Etiqueta map y area</h2>
+    <p>Crea un mapa de imagen. Los mapas de imagen permiten a los autores definir secciones en una imagen y, opcionalmente, convertirlas en hipervínculos que apuntan a otros recursos.</p>
+    <img class="imagemap__img" src="http://maddesigns.de/wp-content/uploads/2014/02/kitty-map.jpg" alt="Infografik1" usemap="#imagemap1" height="600" width="800">
+    <map id="imagemap1" name="imagemap1">
+        <area shape="rect" alt="Link1" coords="560,68,756,144" href="https://es.wikipedia.org/wiki/pan"/>
+        <area shape="rect" alt="Link2" coords="28,200,244,276" href="https://es.wikipedia.org/wiki/Rosa"/>
+        <area shape="rect" alt="Link2" coords="485,445,760,520" href="https://es.wikipedia.org/wiki/Cactaceae"/>
+    </map>
+
+    <h2>Etiqueta svg</h2>
+    <p>Es usado para agregar un fragmento de un SVG dentro de un documento SVG o HTML.</p>
+    <svg xmlns="http://www.w3.org/2000/svg"
+        width="150" height="100" viewBox="0 0 3 2">
+        <rect width="1" height="2" x="0" fill="#008d46" />
+        <rect width="1" height="2" x="1" fill="#ffffff" />
+        <rect width="1" height="2" x="2" fill="#d2232c" />
+    </svg>
+
+    <h2>Etiqueta math</h2>
+    <p>Sirve para insertar texto en formato de fórmula matemática.</p>
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow>
+           <msup><mi>a</mi><mn>2</mn></msup>
+           <mo>+</mo> 
+           <msup><mi>b</mi><mn>2</mn></msup>
+           <mo>=</mo>
+           <msup><mi>c</mi><mn>2</mn></msup>
+        </mrow>
+           
+     </math>
+
+
+    <script>
+        var c = document.getElementById("micanvas");
+        var cxt = c.getContext("2d");
+
+        cxt.fillStyle = "#123456"; // Definimos el color para rellenar el rectangulo
+        cxt.fillRect(30,10,50,100); // Dibuja un rectangulo relleno - fillRect(x,y,width,height)
+
+        cxt.strokeStyle = "red"; // Definimos el color para pintar el borde
+        cxt.strokeRect(70,32,100,50); // Dibuja el borde del rectangulo - strokeRect(x,y,width,height)
+
+        cxt.fillRect(145,25,70,70); // Dibuja un rectangulo relleno del ultimo color definido con fillStyle
+
+        cxt.fillStyle = "rgba(220,220,10,0.7)"; // Definimos otro color para rellenar el rectangulo
+        cxt.fillRect(180,10,100,100); // Dibuja un rectangulo relleno
+
+        cxt.clearRect(30,10,20,20); // Borra el contenido que hubiese en el area del rectangulo definido
+
+        cxt.strokeRect(190,20,80,80);
+    </script>
 </body>
 </html>
